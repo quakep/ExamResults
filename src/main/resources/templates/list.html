@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script type="text/javascript" th:href="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<div th:insert="navbar.html">
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Exam</th>
+                    <th scope="col">Mark</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <tr th:each="student : ${students}">
+                    <th scope="row" th:text="${student.getId()}" th:style="${student.getMark() == 'F'} ? 'color: red' : ''"></th>
+                    <td th:text="${student.getSurname()}" th:style="${student.getMark() == 'F'} ? 'color: red' : ''"></td>
+                    <td th:text="${student.getName()}" th:style="${student.getMark() == 'F'} ? 'color: red' : ''"></td>
+                    <td th:text="${student.getExam()}" th:style="${student.getMark() == 'F'} ? 'color: red' : ''"></td>
+                    <td th:text="${student.getMark()}" th:style="${student.getMark() == 'F'} ? 'color: red' : ''"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
